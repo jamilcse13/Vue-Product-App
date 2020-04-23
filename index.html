@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Product App</title>
+</head>
+<body>
+    
+    <div class="nav-bar"></div>
+
+    <div id="root">
+        <div class="product">
+            <!-- binding -->
+            <div class="product-image">
+                <img v-bind:src="image">
+                <a :href="link">Learn VueJs</a>
+            </div>
+
+            <!-- conditional rendering -->
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+                <p v-if="inventory>10">In Stock</p>
+                <p v-else-if="inventory > 0 && inventory <= 10">Almost sold out!</p>
+                <p v-else>Out of Stock</p>
+
+                <!-- list rendering -->
+                <ul>
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
+
+                <div v-for="variant in variants" :key="variant.variantId">
+                    <p>{{ variant.variantColor }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
